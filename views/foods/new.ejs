@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1 class="is-size-3">Add New Food Item</h1>
+    <form action="/users/<%= user._id %>/foods" method="POST">
+        <label class="label" for="name">Food Name</label>
+        <input class="input" style="max-width: 200px;" type="text" name="name" placeholder="Food Name" required />
+        <button type="submit" class="button">Save</button>
+    </form>
+  </body>
+</html>

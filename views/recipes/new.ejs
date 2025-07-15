@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Add New Recipe</h1>
+        <form action="" method="POST">
+            <label class="label" for="name">Recipe Name</label>
+            <input class="input" style="max-width: 200px;" type="text" name="name" placeholder="Recipe Name" required />
+            <label class="label" for="instructions">Instructions</label>
+            <textarea class="textarea" name="instructions" placeholder="Instructions" >Write instructions here..</textarea>
+            
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

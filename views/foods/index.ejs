@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <title>My Pantry</title>
+  </head>
+  <body>
+  <%- include('../partials/_navbar.ejs') %>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Welcome to my Pantry</h1>
+      <p class="subtitle">You have <%= pantry.length %> items in your pantry:</p>
+      <div>
+          <% pantry.forEach((item) => { %>
+          <p><%= pantry.indexOf(item) + 1 %>. <%= item.name %></p>
+          <div class="is-flex is-flex-direction-row is-align-items-center">
+            <p class="button"><a href="/users/<%= user._id %>/foods/<%= item._id %>/edit">edit</a></p>
+            <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE" method="POST">
+              <button class="button" type="submit">delete</button>
+            </form>
+          </div>
+      <% }); %>
+    </div>
+    <p class="button mt-3"><a href="/users/<%= user._id %>/foods/new">+ Add new food</a></p>
+    </div>
+  </section>
+  </body>
+</html>

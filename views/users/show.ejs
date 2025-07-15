@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1 class="is-size-3"><%= user.username %>'s Pantry</h1>
+    <ul>
+    <% user.pantry.forEach(item => { %>
+        <li><%= item.name %></li>
+    <% }); %>
+    </ul>
+  </body>
+</html>

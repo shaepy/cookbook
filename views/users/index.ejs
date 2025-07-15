@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Community Page</h1>
+        <p class="subtitle">Welcome to the community page! Here you can explore various food items shared by our users.</p>
+        <div class="m-4 is-flex is-flex-wrap-wrap is-flex-direction-row is-gap-3 is-align-items-top">
+            <% users.forEach(user => { %>
+            <a href="/users/<%= user._id %>">
+                <div class="box m-1" style="max-width: 300px;">
+                    <h2 class="is-size-4 has-text-centered"><%= user.username %>'s Pantry</h2>
+                    <p class="has-text-centered"><%= user.pantry.length %> items added.</p>
+                </div>
+            </a>
+        <% });%>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
