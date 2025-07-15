@@ -8,6 +8,16 @@
 </head>
 <body>
   <%- include('./partials/_navbar.ejs') %>
-  <h1 class="is-size-3">Welcome to CookBook</h1>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Welcome to Cookbook</h1>
+        <% if (user) { %>
+        <h2 class="subtitle"><%= user.username %>'s personal recipe collection</h2>
+        <% } else { %>
+        <h2 class="subtitle">Your personal recipe collection</h2>
+        <% } %>
+      </div>
+    </div>
 </body>
 </html>

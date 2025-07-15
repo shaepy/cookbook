@@ -8,20 +8,30 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <h1>Create a new account!</h1>
-  <form action="/auth/sign-up" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-    <label for="confirmPassword">Confirm Password:</label>
-    <input 
-      type="password"
-      name="confirmPassword"
-      id="confirmPassword"
-      required 
-    />
-    <button class="button" type="submit">Sign up</button>
-  </form>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Create a New Account</h1>
+      <form action="/auth/sign-up" method="POST" style="max-width: 450px;" class="is-gap-1 box is-flex is-flex-direction-column is-align-items-center has-text-centered">
+        <div>
+          <label class="label" for="username">Username</label>
+          <input class="input" class="input" style="max-width: 200px" type="text" name="username" id="username" required />
+        </div>
+        <div>
+          <label class="label" for="password">Password</label>
+          <input class="input" style="max-width: 200px" type="password" name="password" id="password" required />
+        </div>
+        <div>
+          <label class="label" for="confirmPassword">Confirm Password</label>
+          <input style="max-width: 200px" class="input" 
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            required 
+          />
+        </div>
+        <button class="button" type="submit">Sign up</button>
+      </form>
+    </div>
+  </section>
 </body>
 </html>

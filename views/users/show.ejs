@@ -8,11 +8,29 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1 class="is-size-3"><%= user.username %>'s Pantry</h1>
-    <ul>
-    <% user.pantry.forEach(item => { %>
-        <li><%= item.name %></li>
-    <% }); %>
-    </ul>
+    <section class="section">
+      <div class="container content">
+        <h1 class="title">Welcome to <%= user.username %>'s Kitchen</h1>
+        <h2 class="is-size-4 title">Pantry</h2>
+        <ul>
+        <% user.pantry.forEach(item => { %>
+            <li><%= item.name %></li>
+        <% }); %>
+        </ul>
+        <h2 class="is-size-4 title">Created Recipes</h2>
+        <ul>
+        <% user.ownedRecipes.forEach(item => { %>
+            <li><a href="/users/<%= user._id %>/recipes/<%= item._id %>"><%= item.name %></a></li>
+        <% }); %>
+        </ul>
+        <h2 class="is-size-4 title">Saved Recipes</h2>
+        <ul>
+        <% user.savedRecipes.forEach(item => { %>
+            <li><a href="/users/<%= user._id %>/recipes/<%= item._id %>"><%= item.name %></a></li>
+        <% }); %>
+        </ul>
+      </div>
+    </section>
+    
   </body>
 </html>

@@ -8,13 +8,21 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <h1>Sign in</h1>
-  <form action="/auth/sign-in" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-    <button class="button" type="submit">Sign in</button>
-  </form>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Sign in</h1>
+      <form action="/auth/sign-in" method="POST" class="has-text-centered is-gap-1 box is-flex is-flex-direction-column is-align-items-center" style="max-width: 450px;">
+        <div>
+          <label class="label" for="username">Username</label>
+          <input class="input" style="max-width: 200px;" type="text" name="username" id="username" required />
+        </div>
+        <div>
+          <label class="label" for="password">Password</label>
+          <input class="input" style="max-width: 200px;" type="password" name="password" id="password" required />
+        </div>
+        <button class="button" type="submit">Sign in</button>
+      </form>
+    </div>
+  </section>
 </body>
 </html>

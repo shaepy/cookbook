@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <title>Recipes</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <section class="section">
+      <div class="container content">
+        <h1 class="title"><%= recipe.name %></h1>
+        <h2 class="is-size-4 title">Instructions</h2>
+        <p><%= recipe.instructions %></p>
+        <h2 class="is-size-4 title">Ingredients</h2>
+        <% recipe.ingredients.forEach((ingredient) => { %>
+          <p><%= ingredient.quantity %> - <%= ingredient.name %></p>
+        <% }); %>
+        <form action="/users/<%= user._id %>/recipes/<%= recipe._id %>/save?_method=PUT" method="POST">
+          <button class="button" type="submit">+ Save Recipe</button>
+        </form>
+        <p class="is-size-7 mt-4"><%= recipe.users.length %> users have saved this recipe.</p>
+      </div>
+    </section>
+  </body>
+</html>

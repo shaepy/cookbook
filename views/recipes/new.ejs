@@ -11,14 +11,43 @@
     <section class="section">
       <div class="container">
         <h1 class="title">Add New Recipe</h1>
-        <form action="" method="POST">
+        <form action="/users/<%= user._id %>/recipes" method="POST">
             <label class="label" for="name">Recipe Name</label>
-            <input class="input" style="max-width: 200px;" type="text" name="name" placeholder="Recipe Name" required />
+            <input class="input" style="max-width: 200px;" type="text" name="name" placeholder="Chicken Salad" required />
             <label class="label" for="instructions">Instructions</label>
-            <textarea class="textarea" name="instructions" placeholder="Instructions" >Write instructions here..</textarea>
-            
+            <textarea class="textarea" name="instructions" placeholder="Write instructions here.." ></textarea>
+            <div id="ingredients">
+                <label class="label">Ingredients</label>
+                <div class="ingredient">
+                    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][name]" placeholder="Ingredient Name" required />
+                    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][quantity]" placeholder="1/4 cup" required />
+                </div>
+            </div>
+            <button class="button is-small" type="button" id="add-ingredient-field">+ Add Ingredient</button>
+            <br>
+            <button class="button" type="submit">Submit Recipe</button>
         </form>
       </div>
     </section>
   </body>
 </html>
+
+<script>
+document.getElementById('add-ingredient-field').addEventListener('click', () => {
+    const ingredientsDiv = document.getElementById('ingredients');
+    const newIngredient = document.createElement('div');
+    newIngredient.classList.add('ingredient');
+    newIngredient.innerHTML = `
+    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][name]" placeholder="Ingredient Name" required />
+    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][quantity]" placeholder="1/4 cup" required />
+    `;
+    ingredientsDiv.appendChild(newIngredient);
+});
+
+// document.querySelectorAll('.ingredient .delete').forEach(button => {
+//     button.addEventListener('click', (e) => {
+//         e.target.parentElement.remove();
+//     });
+// });
+
+</script>

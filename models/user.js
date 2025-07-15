@@ -17,10 +17,14 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   pantry: [foodSchema],
-  recipes: [{
+  savedRecipes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Recipe',
   }],
+  ownedRecipes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Recipe',
+  }]
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:userId', async (req, res) => {
-    const users = await User.find({});
+    const users = await User.find({}).populate('pantry savedRecipes ownedRecipes');
     const user = users.find(u => u._id.toString() === req.params.userId);
     res.render('users/show.ejs', { user });
 });

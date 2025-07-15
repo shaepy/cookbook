@@ -18,6 +18,8 @@
                 <div class="box m-1" style="max-width: 300px;">
                     <h2 class="is-size-4 has-text-centered"><%= user.username %>'s Pantry</h2>
                     <p class="has-text-centered"><%= user.pantry.length %> items added.</p>
+                    <p class="has-text-centered"><%= user.savedRecipes.length %> recipes saved.</p>
+                    <p class="has-text-centered"><%= user.ownedRecipes.length %> recipes created.</p>
                 </div>
             </a>
         <% });%>

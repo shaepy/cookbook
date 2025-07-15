@@ -1,12 +1,44 @@
-<nav>
-  <a href="/">Home</a>
-  <% if(user) { %>
-  <a href="/users/<%= user._id %>/foods">View my Pantry</a>
-  <a href="/users/<%= user._id %>/recipes">View my Recipes</a>
-  <a href="/users">Explore Our Community</a>
-  <a href="/auth/sign-out">Sign Out</a>
-  <% } else { %>
-  <a href="/auth/sign-in">Sign In</a>
-  <a href="/auth/sign-up">Sign Up</a>
-  <% } %>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <!-- branding -->
+    <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" id="navbarBurger">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu" id="navbarMenu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">Home</a>
+      <% if (user) { %>
+        <a class="navbar-item" href="/users/<%= user._id %>/recipes">Recipes</a>
+        <a class="navbar-item" href="/users/<%= user._id %>/foods">Pantry</a>
+        <a class="navbar-item" href="/users">Explore</a>
+      <% } %>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if (user) { %>
+          <a class="button" href="/auth/sign-out">Logout</a>
+          <% } else { %>
+          <a class="button" href="/auth/sign-in">Login</a>
+          <a class="button is-light" href="/auth/sign-up">Register</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const navbarBurger = document.getElementById("navbarBurger");
+  const navbarMenu = document.getElementById("navbarMenu");
+  navbarBurger.addEventListener("click", () => {
+    navbarBurger.classList.toggle("is-active");
+    navbarMenu.classList.toggle("is-active");
+  });
+});
+</script>

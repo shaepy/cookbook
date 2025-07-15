@@ -9,15 +9,29 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <section class="section">
-      <div class="container">
+      <div class="container is-flex is-flex-direction-column is-gap-2">
         <h1 class="title">My Recipes</h1>
-        <p class="subtitle">You have <%= recipes.length %> recipes:</p>
-        <ul>
-          <% recipes.forEach(recipe => { %>
-            <li><a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a></li>
-          <% }) %>
-        </ul>
-        <p class="button mt-3"><a href="/users/<%= user._id %>/recipes/new">+ Add new Recipe</a></p>
+        <div>
+          <h2 class="is-size-4">Saved Recipes</h2>
+          <ul>
+            <% savedRecipes.forEach(recipe => { %>
+              <li><%= savedRecipes.indexOf(recipe) + 1 %>. 
+                <a href="/users/<%= user._id %>/recipes/<%= recipe._id %>"><%= recipe.name %></a>
+              </li>
+            <% }) %>
+            </ul>
+        </div>
+        <div>
+          <h2 class="is-size-4">Recipes Created</h2>
+          <ul>
+            <% ownedRecipes.forEach(recipe => { %>
+              <li><%= ownedRecipes.indexOf(recipe) + 1 %>. 
+                <a href="/users/<%= user._id %>/recipes/<%= recipe._id %>"><%= recipe.name %></a>
+              </li>
+            <% }) %>
+            </ul>
+        </div>
+        <p class="button mt-3" style="max-width: 175px;"><a href="/users/<%= user._id %>/recipes/new">+ Add new Recipe</a></p>
       </div>
     </section>
   </body>
