@@ -22,6 +22,12 @@ router.get('/:recipeId', async (req, res) => {
     res.render('recipes/show.ejs', { recipe });
 });
 
+router.get('/:recipeId/edit', async (req, res) => {
+    const recipe = await Recipe.findById(req.params.recipeId);
+    console.log('RECIPE IS:', recipe);
+    res.render('recipes/edit.ejs', { recipe });
+});
+
 // Add recipe to user's saved recipes
 // Add user to recipe's 'users' array
 router.put('/:recipeId/save', async (req, res) => {
@@ -64,6 +70,35 @@ router.post('/', async (req, res) => {
     const user = await User.findById(req.session.user._id);
     user.ownedRecipes.push(newRecipe._id);
     await user.save();
+    res.redirect(`/users/${req.session.user._id}/recipes`);
+});
+
+router.put('/:recipeId', async (req, res) => {
+    console.log('REQ.BODY IS:', req.body);
+    const { name, instructions } = req.body;
+    const ingredientNames = req.body['ingredients[][name]'];
+    const ingredientQuantities = req.body['ingredients[][quantity]'];
+
+    const ingredients = ingredientNames.map((name, index) => {
+        return { name: name, quantity: ingredientQuantities[index] };
+    });
+    console.log('INGREDIENTS ARE:', ingredients);
+
+    await Recipe.findByIdAndUpdate(req.params.recipeId, {
+        name: name,
+        instructions: instructions,
+        ingredients: ingredients,
+    });
+    console.log('RECIPE UPDATED');
+    res.redirect(`/users/${req.session.user._id}/recipes/${req.params.recipeId}`);
+});
+
+router.delete('/:recipeId', async (req, res) => {
+    const user = await User.findById(req.session.user._id);
+    user.ownedRecipes.pull(req.params.recipeId);
+    await user.save();
+    const recipe = await Recipe.findByIdAndDelete(req.params.recipeId);
+    console.log('RECIPE DELETED:', recipe);
     res.redirect(`/users/${req.session.user._id}/recipes`);
 });
 

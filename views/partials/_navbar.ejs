@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <!-- branding -->
     <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" id="navbarBurger">
@@ -21,10 +21,10 @@
       <div class="navbar-item">
         <div class="buttons">
           <% if (user) { %>
-          <a class="button" href="/auth/sign-out">Logout</a>
+          <a class="button is-warning is-light" href="/auth/sign-out">Logout</a>
           <% } else { %>
           <a class="button" href="/auth/sign-in">Login</a>
-          <a class="button is-light" href="/auth/sign-up">Register</a>
+          <a class="button is-warning is-light" href="/auth/sign-up">Register</a>
           <% } %>
         </div>
       </div>

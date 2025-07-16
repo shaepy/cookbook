@@ -16,22 +16,28 @@
           <ul>
             <% savedRecipes.forEach(recipe => { %>
               <li><%= savedRecipes.indexOf(recipe) + 1 %>. 
-                <a href="/users/<%= user._id %>/recipes/<%= recipe._id %>"><%= recipe.name %></a>
+                <a class="" href="/users/<%= user._id %>/recipes/<%= recipe._id %>"><%= recipe.name %></a>
               </li>
             <% }) %>
             </ul>
         </div>
         <div>
           <h2 class="is-size-4">Recipes Created</h2>
-          <ul>
-            <% ownedRecipes.forEach(recipe => { %>
-              <li><%= ownedRecipes.indexOf(recipe) + 1 %>. 
-                <a href="/users/<%= user._id %>/recipes/<%= recipe._id %>"><%= recipe.name %></a>
-              </li>
-            <% }) %>
-            </ul>
+          <div class="is-flex is-flex-direction-column ">
+          <% ownedRecipes.forEach(recipe => { %>
+            <div class="box is-flex is-flex-direction-column is-gap-1 has-text-centered" style="max-width: 285px;">
+              <h3 class="is-size-5"><a class="" href="/users/<%= user._id %>/recipes/<%= recipe._id %>"><%= recipe.name %></a></h3>
+              <div class="is-flex is-flex-direction-row is-align-items-center is-justify-content-center is-gap-1">
+                <p class="button is-small"><a class="has-text-black" href="/users/<%= user._id %>/recipes/<%= recipe._id %>/edit">edit</a></p>
+                <form action="/users/<%= user._id %>/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+                  <button class="button is-small" type="submit">delete</button>
+                </form>
+              </div>
+            </div>
+          <% }) %>
+          </div>
         </div>
-        <p class="button mt-3" style="max-width: 175px;"><a href="/users/<%= user._id %>/recipes/new">+ Add new Recipe</a></p>
+        <p class="button mt-3" style="max-width: 175px;"><a class="has-text-black" href="/users/<%= user._id %>/recipes/new">+ Add new Recipe</a></p>
       </div>
     </section>
   </body>

@@ -8,11 +8,15 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1 class="is-size-3">Edit Food Item</h1>
-    <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=PUT" method="POST">
-      <label for="name">Food Name:</label>
-      <input style="max-width: 200px;" class="input" type="text" id="name" name="name" value="<%= item.name %>" required />
-      <button type="submit" class="button">Update</button>
-    </form>
+    <section class="section">
+      <div class="container" style="max-width: fit-content;">
+        <h1 class="title">Edit Food Item</h1>
+        <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=PUT" method="POST" class="box is-flex-direction-row is-flex is-align-items-center">
+            <label class="label" for="name">Name</label>
+            <input class="input" type="text" id="name" name="name" value="<%= item.name %>" required />
+          <button type="submit" class="button">Update</button>
+        </form>
+      </div>
+    </section>
   </body>
 </html>

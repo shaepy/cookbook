@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <title>My Recipes</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title is-3">Edit Recipe</h1>
+        <form action="/users/<%= user._id %>/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="box is-flex is-flex-direction-column" style="max-width: 520px;">
+          <div class="field">
+            <label class="label" for="name">Recipe Name</label>
+            <div class="control">
+              <input style="max-width: 500px;" class="input" type="text" id="name" name="name" value="<%= recipe.name %>" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="instructions">Instructions</label>
+            <div class="control" style="max-width: 500px;">
+              <textarea class="textarea" id="instructions" name="instructions" required><%= recipe.instructions %></textarea>
+            </div>
+          <div class="field mt-4">
+            <label class="label" for="ingredients">Ingredients</label>
+            <div>
+            <% recipe.ingredients.forEach(ingredient => { %>
+                <div class="field is-horizontal">
+                    <input style="max-width: 200px;" class="input mr-1" type="text" name="ingredients[][name]" value="<%= ingredient.name %>" required />
+                    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][quantity]" value="<%= ingredient.quantity %>" required />
+                </div>
+            <% }); %>
+            </div>
+          </div>
+          <button type="submit" class="button">Update Recipe</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

@@ -11,21 +11,21 @@
     <section class="section">
       <div class="container">
         <h1 class="title">Add New Recipe</h1>
-        <form action="/users/<%= user._id %>/recipes" method="POST">
+        <form action="/users/<%= user._id %>/recipes" method="POST" class="box" style="max-width: 500px;">
             <label class="label" for="name">Recipe Name</label>
-            <input class="input" style="max-width: 200px;" type="text" name="name" placeholder="Chicken Salad" required />
+            <input class="input" style="max-width: 500px;" type="text" name="name" placeholder="Chicken Salad" required />
             <label class="label" for="instructions">Instructions</label>
             <textarea class="textarea" name="instructions" placeholder="Write instructions here.." ></textarea>
             <div id="ingredients">
                 <label class="label">Ingredients</label>
                 <div class="ingredient">
-                    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][name]" placeholder="Ingredient Name" required />
-                    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][quantity]" placeholder="1/4 cup" required />
+                    <input style="max-width: 210px;" class="input" type="text" name="ingredients[][name]" placeholder="Ingredient Name" required />
+                    <input style="max-width: 160px;" class="input" type="text" name="ingredients[][quantity]" placeholder="1/4 cup" required />
                 </div>
             </div>
-            <button class="button is-small" type="button" id="add-ingredient-field">+ Add Ingredient</button>
+            <button class="button is-small is-light mt-2" type="button" id="add-ingredient-field">+ Add Ingredient</button>
             <br>
-            <button class="button" type="submit">Submit Recipe</button>
+            <button class="button mt-2" type="submit">Submit Recipe</button>
         </form>
       </div>
     </section>
@@ -37,9 +37,10 @@ document.getElementById('add-ingredient-field').addEventListener('click', () => 
     const ingredientsDiv = document.getElementById('ingredients');
     const newIngredient = document.createElement('div');
     newIngredient.classList.add('ingredient');
+    newIngredient.classList.add('mt-2');
     newIngredient.innerHTML = `
-    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][name]" placeholder="Ingredient Name" required />
-    <input style="max-width: 200px;" class="input" type="text" name="ingredients[][quantity]" placeholder="1/4 cup" required />
+    <input style="max-width: 210px;" class="input" type="text" name="ingredients[][name]" placeholder="Ingredient Name" required />
+    <input style="max-width: 160px;" class="input" type="text" name="ingredients[][quantity]" placeholder="1/4 cup" required />
     `;
     ingredientsDiv.appendChild(newIngredient);
 });
